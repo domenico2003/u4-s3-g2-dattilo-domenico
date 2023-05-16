@@ -14,6 +14,22 @@ import poject.utils.jpaUtil;
 public class Main {
 
 	public static void main(String[] args) {
+
+		/**
+		 * NON FUNZIONA PERCHE MANCA LA PASSWORD CONTATTARMI PER RECUPERARLA:
+		 * domdat03@gmail.com
+		 **/
+		System.out.println(
+				"**********************************************************************************************");
+
+		System.out.println();
+		System.out.println("NON FUNZIONA PERCHE MANCA LA PASSWORD CONTATTAMI PER RECUPERARLA: domdat03@gmail.com");
+		System.out.println();
+		System.out.println(
+				"**********************************************************************************************");
+		System.out.println();
+
+		// di seguito il codice
 		EntityManagerFactory emf = jpaUtil.getEntityManagerFactory();
 
 		EventoDAO eventoDao = new EventoDAO(emf);

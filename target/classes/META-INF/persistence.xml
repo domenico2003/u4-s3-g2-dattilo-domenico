@@ -7,7 +7,8 @@
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/gestioneventi"/>
 			<property name="javax.persistence.jdbc.user" value="postgres"/>
-			<property name="javax.persistence.jdbc.password" value="domenico2003"/>
+			<!-- CONTATTARMI PER LA PASSWORD domdat03@gmail.com-->
+			<property name="javax.persistence.jdbc.password" value=""/>
 			<property name="hibernate.hbm2ddl.auto" value="update"/>
 		</properties>
 	</persistence-unit>
