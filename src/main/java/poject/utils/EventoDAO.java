@@ -6,15 +6,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import lombok.extern.slf4j.Slf4j;
 import poject.classDatabase.Evento;
 import poject.exceptions.NotFoundException;
 
+@Slf4j
 public class EventoDAO {
 	private EntityManagerFactory emf;
-	private static Logger logger = LoggerFactory.getLogger(EventoDAO.class);
 
 	public EventoDAO(EntityManagerFactory emf) {
 		this.emf = emf;
@@ -32,7 +30,7 @@ public class EventoDAO {
 		transazione.commit();
 
 		em.close();
-		logger.info("salvataggio avvenuto con successo");
+		log.info("salvataggio avvenuto con successo");
 	}
 
 	public Evento getById(String id) {
@@ -60,16 +58,30 @@ public class EventoDAO {
 
 			if (evento != null) {
 				em.remove(evento);
-				logger.info("elemento con id: " + id + " eliminato con successo");
+				log.info("elemento con id: " + id + " eliminato con successo");
 			} else {
 				throw new NotFoundException("evento non trovato");
 			}
 			transazione.commit();
 		} catch (NotFoundException e) {
-			logger.error(e.getMessage());
+			log.error(e.getMessage());
 		} finally {
 			em.close();
 		}
 
+	}
+
+	public void refresh(String id) {
+		EntityManager em = emf.createEntityManager();
+
+		Evento evento = em.find(Evento.class, UUID.fromString(id));
+		evento.setTitolo("sono stato modificato");
+		log.info("PRE REFRESH");
+		log.info(evento.toString());
+		em.refresh(evento);
+		log.info("POST REFRESH");
+		log.info(evento.toString());
+
+		em.close();
 	}
 }

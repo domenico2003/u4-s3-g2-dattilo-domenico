@@ -11,17 +11,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@ToString
+@NoArgsConstructor
 public class Evento {
-	@Override
-	public String toString() {
-		return "Evento [id=" + id + ", titolo=" + titolo + ", dataEvento=" + dataEvento + ", descrizione=" + descrizione
-				+ ", tipoEvento=" + tipoEvento + ", numeroMassimoPartecipanti=" + numeroMassimoPartecipanti + "]";
-	}
 
 	@Id
 	@GeneratedValue
@@ -38,9 +37,6 @@ public class Evento {
 	@Column
 	private int numeroMassimoPartecipanti;
 
-	public Evento() {
-	}
-
 	public Evento(String titolo, LocalDate dataEvento, String descrizione, EventoTipo tipoEvento,
 			int numeroMassimoPartecipanti) {
 
@@ -49,10 +45,6 @@ public class Evento {
 		this.descrizione = descrizione;
 		this.tipoEvento = tipoEvento;
 		this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
-	}
-
-	public UUID getId() {
-		return id;
 	}
 
 }
